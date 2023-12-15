@@ -3,10 +3,10 @@
 public class Car : IVehicle
 {
     public string Model { get; }
-    private string Owner { get; set; }
-    private double FuelAmmount { get; set; }
+    public string Owner { get; set; }
+    public double FuelAmmount { get; set; }
     private int NumberOfWheels { get; set; }
-    public bool EngineRunning { get; set; }
+    private bool EngineRunning { get; set; }
 
     public Car(string model, string owner, double fuelAmmount, int numberOfWheels)
     {
