@@ -1,30 +1,38 @@
-﻿using System.Xml.Schema;
-
-namespace gitDZ.vehicle;
+﻿namespace gitDZ.vehicle;
 
 public class Car : IVehicle
 {
     public string Model { get; }
     private string Owner { get; set; }
     private double FuelAmmount { get; set; }
-    public bool IsEngineRunning { get; set; }
+    private int NumberOfWheels { get; set; }
+    public bool EngineRunning { get; set; }
 
-    public Car(string model, string owner, double fuelAmmount)
+    public Car(string model, string owner, double fuelAmmount, int numberOfWheels)
     {
         Model = model;
         Owner = owner;
         FuelAmmount = fuelAmmount;
-        IsEngineRunning = false;
+        EngineRunning = false;
+        NumberOfWheels = numberOfWheels;
     }
 
     public void EngineTurnOn()
     {
         if (FuelAmmount > 0)
-            IsEngineRunning = true;
+            EngineRunning = true;
     }
 
     public void EngineTurnOff()
     {
-        IsEngineRunning = false;
+        EngineRunning = false;
+    }
+
+    public void DriveOneKm()
+    {
+        if (EngineRunning && FuelAmmount >= 0.06)
+        {
+            FuelAmmount -= 0.06;
+        }
     }
 }
